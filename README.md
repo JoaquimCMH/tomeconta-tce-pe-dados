@@ -40,14 +40,14 @@ Os passos para a restauração e utilização do banco de dados são elecandos a
 1. Após ter clonado o repositório, baixe o [arquivo](https://www.tce.pe.gov.br/internet/docs/dadosabertos/TomeConta.rar) com o banco no formato *.rar* e o descompacte na pasta *dados*.
 
 ```shell
-# clona o repositório
+# clone o repositório
 git clone  https://github.com/JoaquimCMH/tce-pe-dados.git
 cd tce-pe-dados
 
-# baixa o arquivo compactado com o backup
+# baixe o arquivo compactado com o backup
 wget -P dados "https://www.tce.pe.gov.br/internet/docs/dadosabertos/TomeConta.rar"
 
-# descompacta o arquivo na pasta dados
+# descompacte o arquivo na pasta dados
 unrar x /dados/TomeConta.rar
 ```
 2. É necessário adicionar no arquivo *docker-compose.yml*, na pasta *config*, o diretório até a pasta *tce-pe-dados*. Sendo assim, no terminal, utilize o comando `pwd` para recuperar o diretório completo e depois insira o resultado onde está escrito "\<insira-aqui-diretorio-completo\>". Essas configurações permitirão que o banco seja restaurado na pasta *mssql*.
@@ -57,13 +57,13 @@ unrar x /dados/TomeConta.rar
 ```shell
 cd config
 
-# executa o container
+# execute o container
 sudo docker-compose up
 
-# entra no container 
+# entre no container 
 sudo docker exec -it mssql-tce-pe bash
 
-# cria a pasta backup dentro do container
+# crie a pasta backup dentro do container
 mkdir /var/opt/mssql/backup
 
 # SAIA do container utilizando ctrl+c
@@ -76,13 +76,13 @@ sudo docker cp ../dados/Backup/TomeConta/TomeConta/TomeConta.bak mssql-tce-pe:/v
 
 5. Restaure o banco.
 ```shell
-# entrando no container
+# entre no container
 sudo docker exec -it mssql-tce-pe bash
 
-# executando o sqlcmd
+# execute o sqlcmd
 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'S3cr3t-P4ssw0rd!'
 
-# verifica os arquivos do arquivo de backup. 
+# verifique os arquivos do arquivo de backup
 # observe na saída se existe TomeConta.mdf e TomeConta_log.ldf para prosseguir com a importação
 RESTORE FILELISTONLY
 FROM DISK = '/var/opt/mssql/backup/TomeConta.bak'
