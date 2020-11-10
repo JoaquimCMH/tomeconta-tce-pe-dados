@@ -48,7 +48,7 @@ cd tce-pe-dados
 wget -P dados "https://www.tce.pe.gov.br/internet/docs/dadosabertos/TomeConta.rar"
 
 # descompacte o arquivo na pasta dados
-unrar x /dados/TomeConta.rar
+unrar x dados/TomeConta.rar dados/
 ```
 2. É necessário adicionar no arquivo *docker-compose.yml*, na pasta *config*, o diretório até a pasta *tce-pe-dados*. Sendo assim, no terminal, utilize o comando `pwd` para recuperar o diretório completo e depois insira o resultado onde está escrito "\<insira-aqui-diretorio-completo\>". Essas configurações permitirão que o banco seja restaurado na pasta *mssql*.
 
@@ -58,7 +58,7 @@ unrar x /dados/TomeConta.rar
 cd config
 
 # execute o container
-sudo docker-compose up
+sudo docker-compose up -d
 
 # entre no container 
 sudo docker exec -it mssql-tce-pe bash
@@ -66,7 +66,7 @@ sudo docker exec -it mssql-tce-pe bash
 # crie a pasta backup dentro do container
 mkdir /var/opt/mssql/backup
 
-# SAIA do container utilizando ctrl+c
+# SAIA do container utilizando ctrl+d
 ```
 4. Copie o .bak para o container.
 
