@@ -41,8 +41,8 @@ Os passos para a restauração e utilização do banco de dados são elecandos a
 
 ```shell
 # clone o repositório
-git clone  https://github.com/JoaquimCMH/tce-pe-dados.git
-cd tce-pe-dados
+git clone  https://github.com/JoaquimCMH/tomeconta-tce-pe-dados.git
+cd tomeconta-tce-pe-dados
 
 # baixe o arquivo compactado com o backup
 wget -P dados "https://www.tce.pe.gov.br/internet/docs/dadosabertos/TomeConta.rar"
@@ -50,7 +50,7 @@ wget -P dados "https://www.tce.pe.gov.br/internet/docs/dadosabertos/TomeConta.ra
 # descompacte o arquivo na pasta dados
 unrar x dados/TomeConta.rar dados/
 ```
-2. É necessário adicionar no arquivo *docker-compose.yml*, na pasta *config*, o diretório até a pasta *tce-pe-dados*. Sendo assim, no terminal, utilize o comando `pwd` para recuperar o diretório completo e depois insira o resultado onde está escrito "\<insira-aqui-diretorio-completo\>". Essas configurações permitirão que o banco seja restaurado na pasta *mssql*.
+2. É necessário adicionar no arquivo *docker-compose.yml*, na pasta *config*, o diretório até a pasta *tomeconta-tce-pe-dados*. Sendo assim, no terminal, utilize o comando `pwd` para recuperar o diretório completo e depois insira o resultado onde está escrito "\<insira-aqui-diretorio-completo\>". Essas configurações permitirão que o banco seja restaurado na pasta *mssql*.
 
 3. Execute o docker e crie a pasta onde ficará o arquivo *.bak*.
 
