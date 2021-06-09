@@ -11,6 +11,6 @@ services:
    volumes:
      - ${ARMAZENAMENTO_BD:-.}/mssql:/var/opt/mssql
      - ${ARMAZENAMENTO_DADOS:-.}:/data
-     - restore.sql:/restore.sql
+     - ./restore.sql:/restore.sql
    ports:
      - 1401:1434
