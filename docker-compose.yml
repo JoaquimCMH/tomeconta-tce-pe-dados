@@ -3,10 +3,14 @@ services:
  db:
    image: "mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04"
    container_name: mssql-tce-pe
+   env_file:
+    - .env
    environment:
      MSSQL_SA_PASSWORD: "S3cr3t-P4ssw0rd!"
-     ACCEPT_EULA: "Y"     
+     ACCEPT_EULA: "Y"
    volumes:
-     - <insira-aqui-diretorio-completo>/mssql:/var/opt/mssql
+     - ${ARMAZENAMENTO_BD:-.}/mssql:/var/opt/mssql
+     - ${ARMAZENAMENTO_DADOS:-.}:/data
+     - ./restore.sql:/restore.sql
    ports:
      - 1401:1434

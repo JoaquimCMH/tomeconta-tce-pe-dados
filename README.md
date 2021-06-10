@@ -50,13 +50,19 @@ wget -P dados "https://www.tce.pe.gov.br/internet/docs/dadosabertos/TomeConta.ra
 # descompacte o arquivo na pasta dados
 unrar x dados/TomeConta.rar dados/
 ```
-2. É necessário adicionar no arquivo *docker-compose.yml*, na pasta *config*, o diretório até a pasta *tomeconta-tce-pe-dados*. Sendo assim, no terminal, utilize o comando `pwd` para recuperar o diretório completo e depois insira o resultado onde está escrito "\<insira-aqui-diretorio-completo\>". Essas configurações permitirão que o banco seja restaurado na pasta *mssql*.
+2. É necessário adicionar criar uma cópia do .env.sample para um arquivo .env na raiz do repositório. Além disso é necessário preencher as variáveis com seus respectivos valores.
+
+Aqui você pode optar por executar o script automático de download e atualização do BD fazendo:
+
+```
+sudo ./update-data.sh
+```
+
+Ou optar por seguir a próxima seção que detalha os passos separadamente:
 
 3. Execute o docker e crie a pasta onde ficará o arquivo *.bak*.
 
 ```shell
-cd config
-
 # execute o container
 sudo docker-compose up -d
 
