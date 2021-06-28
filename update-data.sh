@@ -23,6 +23,7 @@ exec > >(tee -a $log_filepath) 2>&1
 printWithTime "Iniciando container..."
 
 mkdir -p $ARMAZENAMENTO_BD
+mkdir -p $ARMAZENAMENTO_DADOS
 chown -R 10001:0 $ARMAZENAMENTO_BD
 chown -R 10001:0 $ARMAZENAMENTO_DADOS
 docker-compose up -d
