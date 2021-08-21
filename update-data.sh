@@ -23,8 +23,10 @@ exec > >(tee -a $log_filepath) 2>&1
 printWithTime "Iniciando container..."
 
 mkdir -p $ARMAZENAMENTO_BD
-mkdir $ARMAZENAMENTO_BD/data
-chown 10001 $ARMAZENAMENTO_BD/data
+mkdir -p $ARMAZENAMENTO_BD/mssql
+chown 10001 $ARMAZENAMENTO_BD/mssql
+mkdir -p $ARMAZENAMENTO_BD/mssql/data
+chown 10001 $ARMAZENAMENTO_BD/mssql/data
 chown -R 10001:0 $ARMAZENAMENTO_BD
 
 mkdir -p $ARMAZENAMENTO_DADOS
